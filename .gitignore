@@ -1,0 +1,15 @@
+# compiled programs
+alu
+alu.exe
+tests
+tests.exe
+*.o
+*.obj
+
+# keep the web build: Vercel serves it as-is
+!public/alu.wasm
+
+.vercel/
+.env
+.vscode/
+.DS_Store

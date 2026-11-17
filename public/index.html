@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2b2d31">
+  <title>8-Bit ALU Simulator</title>
+  <style>
+    /* Pixel Operator by Jayvee Enaguas (CC0 1.0), embedded so the page needs no font download */
+    @font-face { font-family: "Pixel Operator"; font-weight: 400; font-style: normal; font-display: swap;
+      src: url(data:font/woff2;base64,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) format("woff2"); }
+    @font-face { font-family: "Pixel Operator"; font-weight: 700; font-style: normal; font-display: swap;
+      src: url(data:font/woff2;base64,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) format("woff2"); }
+
+    :root {
+      color-scheme: dark;
+      --paper: #2b2d31;
+      --white: #383a40;
+      --ink: #0f1012;
+      --text: #ecece8;
+      --muted: #a4a5a0;
+      --track: #54565c;
+      --berry: #4f86f7;
+      --berry-dark: #3d72e6;
+      --berry-text: #8db2ff;
+      --hover: #43454b;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      color: var(--text);
+      background-color: var(--paper);
+      background-image: radial-gradient(#3a3c41 1px, transparent 1px);
+      background-size: 18px 18px;
+      font-family: "Pixel Operator", "Courier New", monospace;
+      font-weight: 400;
+    }
+
+    button, input { font: inherit; }
+    button { color: inherit; }
+    .button { color: var(--ink); }
+    .button.secondary { color: var(--text); }
+    button:focus-visible, input:focus-visible, label:focus-within {
+      outline: 3px solid var(--berry);
+      outline-offset: 3px;
+    }
+
+    .app { width: min(540px, 100%); }
+    .app.wide { width: min(1100px, 100%); }
+    .app.wide .guide { max-width: 540px; margin-inline: auto; }
+    .guide {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    .nib { flex: 0 0 82px; width: 82px; height: 82px; image-rendering: pixelated; }
+    .nib .eye { transform-box: fill-box; transform-origin: center; animation: blink 4.5s infinite; }
+    .nib .bulb { animation: glow 1.6s steps(2) infinite; }
+    .nib { animation: bob 2.4s steps(2) infinite; }
+    .app.is-processing .nib { animation: compute-bob .34s steps(2) infinite; }
+    .app.is-processing .nib .eye { animation: compute-scan .62s steps(2) infinite; }
+    .app.is-processing .nib .bulb { animation: compute-glow .28s steps(2) infinite; }
+    @keyframes compute-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+    @keyframes compute-scan { 0%, 100% { transform: translateX(-1px) scaleY(1); } 50% { transform: translateX(1px) scaleY(.7); } }
+    @keyframes compute-glow { 0%, 100% { opacity: 1; } 50% { opacity: .2; } }
+    @keyframes blink { 0%, 94%, 100% { transform: scaleY(1); } 96%, 98% { transform: scaleY(.15); } }
+    @keyframes glow { 50% { opacity: .35; } }
+    @keyframes bob { 50% { transform: translateY(-1px); } }
+    @media (prefers-reduced-motion: reduce) { .nib, .nib .eye, .nib .bulb, .app.is-processing .nib, .app.is-processing .nib .eye, .app.is-processing .nib .bulb { animation: none; } }
+    .speech {
+      position: relative;
+      flex: 1;
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      padding: 15px 17px;
+      border: 3px solid var(--ink);
+      background: var(--white);
+      box-shadow: 4px 4px 0 var(--ink);
+      font-size: 24px;
+      line-height: 1.25;
+    }
+    .speech::before, .speech::after {
+      content: "";
+      position: absolute;
+      left: -9px;
+      top: 24px;
+      width: 12px;
+      height: 15px;
+    }
+    .speech::before { background: var(--ink); clip-path: polygon(6px 0, 12px 0, 12px 15px, 6px 15px, 6px 12px, 3px 12px, 3px 9px, 0 9px, 0 6px, 3px 6px, 3px 3px, 6px 3px); }
+    .speech::after { background: var(--white); clip-path: polygon(6px 3px, 12px 3px, 12px 12px, 6px 12px, 6px 9px, 3px 9px, 3px 6px, 6px 6px); }
+
+    .panel {
+      padding: 22px;
+      border: 3px solid var(--ink);
+      background: var(--white);
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+    .step[hidden] { display: none; }
+    .pixel, .button, .choice strong {
+      font-family: "Pixel Operator", "Courier New", monospace;
+    }
+    .step-count {
+      margin: 0 0 18px;
+      color: var(--berry);
+      font-family: "Pixel Operator", "Courier New", monospace;
+      font-size: 24px;
+    }
+    .upload {
+      min-height: 155px;
+      display: grid;
+      place-content: center;
+      gap: 12px;
+      padding: 18px;
+      border: 2px dashed var(--ink);
+      background: var(--paper);
+      text-align: center;
+      cursor: pointer;
+    }
+    .upload:hover, .upload.over { background: var(--hover); }
+    .upload-icon { color: var(--berry); font-size: 34px; }
+    .upload strong, .choice strong { font-size: 24px; line-height: 1.25; }
+    .upload small { color: var(--muted); font-size: 20px; line-height: 1.25; }
+    #file { position: absolute; width: 1px; height: 1px; opacity: 0; }
+    .upload.has-image { display: block; min-height: 0; padding: 10px; }
+    .upload.has-image .upload-icon,
+    .upload.has-image strong,
+    .upload.has-image small { display: none; }
+    .upload-preview {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 420px;
+      margin: 0 auto;
+      border: 2px solid var(--ink);
+    }
+    .upload-preview[hidden] { display: none; }
+
+    .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .choice {
+      min-height: 86px;
+      padding: 12px;
+      border: 2px solid var(--ink);
+      background: var(--paper);
+      text-align: left;
+      cursor: pointer;
+    }
+    .choice:hover { background: var(--hover); }
+    .choice.selected { color: var(--ink); background: var(--berry); box-shadow: 3px 3px 0 var(--ink); transform: translate(-2px, -2px); }
+    .choice.selected span { color: #0d2152; }
+    .choice span { display: block; margin-top: 7px; color: var(--muted); font-size: 20px; line-height: 1.25; }
+
+    .setting {
+      padding: 15px;
+      border: 2px solid var(--ink);
+      background: var(--paper);
+    }
+    .setting label { display: flex; justify-content: space-between; gap: 12px; font-size: 24px; line-height: 1.25; }
+    .setting output { color: var(--berry); }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 22px;
+      margin: 16px 0 5px;
+      background: transparent;
+      cursor: pointer;
+      --a: 50%; --b: 50%;
+    }
+    /* brightness: fill runs from the centre out to the knob, either side */
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 8px; border: 0; border-radius: 0;
+      background:
+        linear-gradient(var(--ink), var(--ink)) center / 2px 100% no-repeat,
+        linear-gradient(to right, var(--track) var(--a), var(--berry) var(--a) var(--b), var(--track) var(--b));
+    }
+    input[type="range"]::-moz-range-track {
+      height: 8px; border: 0; border-radius: 0;
+      background:
+        linear-gradient(var(--ink), var(--ink)) center / 2px 100% no-repeat,
+        linear-gradient(to right, var(--track) var(--a), var(--berry) var(--a) var(--b), var(--track) var(--b));
+    }
+    /* threshold: no fill bar, just a quiet hairline and the knob */
+    input[type="range"].plain::-webkit-slider-runnable-track { height: 2px; background: var(--track); }
+    input[type="range"].plain::-moz-range-track { height: 2px; background: var(--track); }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 20px; height: 20px; margin-top: -6px;
+      border: 3px solid var(--ink); border-radius: 0; background: var(--berry);
+    }
+    input[type="range"].plain::-webkit-slider-thumb { margin-top: -9px; }
+    input[type="range"]::-moz-range-thumb {
+      width: 20px; height: 20px; box-sizing: border-box;
+      border: 3px solid var(--ink); border-radius: 0; background: var(--berry);
+    }
+    .setting-note { margin: 8px 0 0; color: var(--muted); font-size: 20px; line-height: 1.25; }
+
+    .actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+    .actions[hidden] { display: none; }
+    .actions { flex-wrap: wrap; align-items: center; }
+    .action-group { display: flex; flex-wrap: wrap; gap: 10px; }
+    .button {
+      min-height: 43px;
+      padding: 11px 13px;
+      border: 2px solid var(--ink);
+      background: var(--berry);
+      box-shadow: 3px 3px 0 var(--ink);
+      font-size: 21px;
+      line-height: 1.45;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .button:hover { background: var(--berry-dark); }
+    .button.secondary { background: var(--paper); }
+    .button:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; }
+
+    .results { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .result { min-width: 0; }
+    .result-title { margin: 0 0 8px; font-family: "Pixel Operator", "Courier New", monospace; font-size: 20px; line-height: 1.25; }
+    .image-frame {
+      width: min(100%, calc(560px * var(--ratio, 1.5)));
+      margin: 0 auto;
+      overflow: hidden;
+      border: 2px solid var(--ink);
+      background: #1d1e21;
+      line-height: 0;
+    }
+    .image-frame img { display: block; width: 100%; height: auto; }
+    .empty { padding: 12px; color: var(--muted); font-size: 20px; line-height: 1.25; text-align: center; }
+    .status-row { position: relative; margin-top: 13px; min-height: 18px; }
+    .status-row .status { margin-top: 0; }
+    .loader {
+        position: static;
+        flex: 0 0 auto;
+        min-width: 65px;
+        height: 43px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        pointer-events: none;
+    }
+    .loader[hidden] { display: none; }
+    .loader i {
+      width: 14px; height: 14px;
+      border: 2px solid var(--ink);
+      background: var(--berry);
+      animation: hop .8s steps(3) infinite;
+    }
+    .loader i:nth-child(2) { animation-delay: .1s; }
+    .loader i:nth-child(3) { animation-delay: .2s; }
+    .loader i:nth-child(4) { animation-delay: .3s; }
+    .loader i:nth-child(5) { animation-delay: .4s; }
+    @keyframes hop {
+      0%, 100% { transform: translateY(0); background: var(--berry); }
+      50% { transform: translateY(-8px); background: #c9dbff; }
+    }
+    @media (prefers-reduced-motion: reduce) { .loader i { animation: none; } }
+    .status { min-height: 18px; font-size: 20px; line-height: 1.25; color: var(--berry); }
+    .status.error { color: #ff8a8a; }
+
+    @media (max-width: 460px) {
+      body { padding: 14px; }
+      .guide { gap: 10px; margin-bottom: 17px; }
+      .nib { flex-basis: 66px; width: 66px; height: 66px; }
+      .speech { min-height: 68px; padding: 10px 12px; font-size: 20px; }
+      .panel { padding: 16px; }
+      .choices, .results { grid-template-columns: 1fr; }
+      .choice { min-height: 70px; }
+      .button { font-size: 15px; padding: 9px 5px; }
+      .actions, .action-group { gap: 6px; }
+    }
+
+    /* pixel-rounded corners: every box is a 9-slice pixel-art border image,
+       and the hard shadow is a drop-shadow so it follows the stepped shape */
+    .panel, .speech, .setting, .upload, .upload:hover, .upload.over, .choice, .choice:hover,
+    .choice.selected, .button, .button:hover, .button.secondary, .button:disabled,
+    .image-frame, .upload-preview { background: transparent; box-shadow: none; }
+    .panel { border: 3px solid transparent; border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%23383a40'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%23383a40'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%23383a40'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%23383a40'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%23383a40'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%23383a40'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%23383a40'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%23383a40'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%23383a40'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%23383a40'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%23383a40'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%23383a40'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%23383a40'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%23383a40'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%23383a40'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%23383a40'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%23383a40'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%23383a40'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%23383a40'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%23383a40'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%23383a40'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E") 3 fill / 9px stretch; filter: drop-shadow(5px 5px 0 var(--ink)); }
+    .speech { border: 3px solid transparent; border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%23383a40'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%23383a40'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%23383a40'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%23383a40'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%23383a40'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%23383a40'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%23383a40'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%23383a40'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%23383a40'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%23383a40'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%23383a40'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%23383a40'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%23383a40'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%23383a40'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%23383a40'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%23383a40'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%23383a40'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%23383a40'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%23383a40'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%23383a40'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%23383a40'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E") 3 fill / 9px stretch; filter: drop-shadow(4px 4px 0 var(--ink)); }
+    .setting { border: 2px solid transparent; border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E") 3 fill / 6px stretch; }
+    .upload { border: 2px solid transparent; border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='7' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='7' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='8' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='7' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='8' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='9' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='7' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='8' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='9' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='7' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='8' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='9' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='7' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='8' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='1' y='6' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='6' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='6' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='7' y='6' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='8' y='6' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='0' y='7' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='7' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='7' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='7' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='7' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='7' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='7' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='7' y='7' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='8' y='7' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='9' y='7' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='8' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='8' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='8' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='8' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='8' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='8' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='7' y='8' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='8' y='8' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='9' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='9' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='9' width='1' height='1' fill='%230f1012'/%3E%3Crect x='7' y='9' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E") 3 fill / 6px round; }
+    .upload:hover, .upload.over { border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='7' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%2343454b'/%3E%3Crect x='6' y='1' width='1' height='1' fill='%2343454b'/%3E%3Crect x='7' y='1' width='1' height='1' fill='%2343454b'/%3E%3Crect x='8' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='7' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='8' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='9' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='7' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='8' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='9' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='7' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='8' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='9' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%2343454b'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%2343454b'/%3E%3Crect x='6' y='5' width='1' height='1' fill='%2343454b'/%3E%3Crect x='7' y='5' width='1' height='1' fill='%2343454b'/%3E%3Crect x='8' y='5' width='1' height='1' fill='%2343454b'/%3E%3Crect x='1' y='6' width='1' height='1' fill='%2343454b'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='6' width='1' height='1' fill='%2343454b'/%3E%3Crect x='6' y='6' width='1' height='1' fill='%2343454b'/%3E%3Crect x='7' y='6' width='1' height='1' fill='%2343454b'/%3E%3Crect x='8' y='6' width='1' height='1' fill='%2343454b'/%3E%3Crect x='0' y='7' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='7' width='1' height='1' fill='%2343454b'/%3E%3Crect x='2' y='7' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='7' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='7' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='7' width='1' height='1' fill='%2343454b'/%3E%3Crect x='6' y='7' width='1' height='1' fill='%2343454b'/%3E%3Crect x='7' y='7' width='1' height='1' fill='%2343454b'/%3E%3Crect x='8' y='7' width='1' height='1' fill='%2343454b'/%3E%3Crect x='9' y='7' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='8' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='8' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='8' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='8' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='8' width='1' height='1' fill='%2343454b'/%3E%3Crect x='6' y='8' width='1' height='1' fill='%2343454b'/%3E%3Crect x='7' y='8' width='1' height='1' fill='%2343454b'/%3E%3Crect x='8' y='8' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='9' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='9' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='9' width='1' height='1' fill='%230f1012'/%3E%3Crect x='7' y='9' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E"); }
+    .image-frame { border: 2px solid transparent; border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E") 3 fill / 6px stretch; padding: 2px; }
+    .upload-preview { border: 2px solid transparent; border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E") 3 fill / 6px stretch; padding: 2px; }
+    .choice { border: 2px solid transparent; border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E") 3 fill / 6px stretch; }
+    .choice:hover { border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E"); }
+    .choice.selected, .choice.selected:hover { border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E"); }
+    .choice.selected { filter: drop-shadow(3px 3px 0 var(--ink)); }
+    .button { border: 2px solid transparent; border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E") 3 fill / 6px stretch; filter: drop-shadow(3px 3px 0 var(--ink)); }
+    .button:hover { border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%233d72e6'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E"); }
+    .button.secondary, .button.secondary:hover { border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%232b2d31'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E"); }
+    .button:disabled { filter: none; }
+      .setting label, .button, .step-count { font-weight: 700; }
+
+    /* Compact supporting typography while keeping Nib's speech bubble unchanged. */
+    .step-count { display: inline-block; margin: 0 0 14px; padding: 5px 9px; border: 2px solid var(--ink); background: var(--berry); color: var(--ink); font-size: 16px; line-height: 1.2; }
+    .upload strong, .choice strong { font-size: 19px; }
+    .upload small, .choice span, .setting-note, .status, .empty { font-size: 15px; }
+    .setting label { font-size: 18px; }
+    .button { font-size: 16px; line-height: 1.2; padding: 10px 12px; }
+    .result-title { display: inline-block; margin: 0 0 8px; padding: 5px 9px; border: 2px solid var(--ink); background: var(--berry); color: var(--ink); font-size: 16px; line-height: 1.2; }
+    .loader { position: static; flex: 1 1 48px; min-width: 48px; height: 43px; align-items: center; justify-content: center; gap: 5px; }
+    .loader i { width: 10px; height: 10px; border-width: 2px; }
+    .loader[hidden] { display: none; }
+    @media (max-width: 420px) {
+      .panel { padding: 16px; }
+      .actions { gap: 8px; }
+      .action-group { gap: 7px; }
+      .button { padding: 9px 10px; font-size: 14px; }
+      .loader { min-width: 55px; gap: 5px; }
+      .loader i { width: 12px; height: 12px; }
+    }
+    /* ---------- ALU-specific pieces (same pixel system as above) ---------- */
+    .status, .setting output { color: var(--berry-text); }
+    .step-count, .result-title { color: var(--ink); }
+
+    .choices.ops { grid-template-columns: 1fr 1fr; }
+    .choice strong .sym { float: right; color: var(--muted); font-weight: 400; }
+    .choice.selected strong .sym { color: #0d2152; }
+
+    .operands { display: grid; gap: 12px; }
+    .operands [hidden] { display: none; }
+    .operand-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .operand-head label { font-size: 18px; font-weight: 700; }
+    .operand-head label em { font-style: normal; color: var(--berry-text, #8db2ff); }
+    .num {
+      width: 170px; min-width: 0; padding: 7px 9px;
+      border: 2px solid var(--ink); background: #1d1e21; color: var(--text);
+      font-size: 18px; text-align: right;
+    }
+    .num.invalid { border-color: #ff8a8a; color: #ff8a8a; }
+    .readout { margin: 10px 0 0; color: var(--muted); font-size: 15px; line-height: 1.25; }
+    .readout b { color: var(--text); font-weight: 400; }
+
+    /* bit cells */
+    .bits { display: flex; gap: 5px; }
+    .bit {
+      flex: 0 0 auto; width: 40px; height: 48px; padding: 0;
+      display: grid; place-content: center; gap: 2px;
+      border: 2px solid transparent;
+      border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E") 3 fill / 6px stretch;
+      color: var(--muted); font-size: 22px; font-weight: 700; line-height: 1;
+      text-align: center;
+    }
+    button.bit { cursor: pointer; }
+    button.bit:hover { border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%2343454b'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%2343454b'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%2343454b'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%2343454b'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%2343454b'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%2343454b'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E"); }
+    .bit small { font-size: 11px; font-weight: 400; color: var(--muted); }
+    .bit.on, button.bit.on:hover { border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E"); color: var(--ink); filter: drop-shadow(2px 2px 0 var(--ink)); }
+    .bit.on small { color: #0d2152; }
+    .bits > .bit:nth-child(5) { margin-left: 9px; }
+    .operand .bits { justify-content: space-between; }
+
+    /* result: long-hand ALU column */
+    .alu-results { grid-template-columns: 1.55fr 1fr; gap: 18px; align-items: start; }
+    .calc { overflow-x: auto; padding: 14px 15px; }
+    .calc-row {
+      display: grid; align-items: center; gap: 8px;
+      grid-template-columns: 74px 30px 274px 52px 52px 52px;
+      min-height: 40px; margin: 3px 0;
+    }
+    .calc-row.head { min-height: 0; color: var(--muted); font-size: 13px; }
+    .calc-row.head span { text-align: right; }
+    .calc-row .label { font-size: 17px; font-weight: 700; white-space: nowrap; }
+    .calc-row .val { font-size: 16px; text-align: right; white-space: nowrap; }
+    .calc-row .bits { gap: 4px; }
+    .calc-row .bit { width: 30px; height: 36px; font-size: 19px; }
+    .calc-row .bits > .bit:nth-child(5) { margin-left: 6px; }
+    .calc-row.carry { min-height: 22px; }
+    .calc-row.carry .bit { height: 20px; border: 0; border-image: none; font-size: 15px; color: #575a62; }
+    .calc-row.carry .bit.c1 { color: var(--berry-text, #8db2ff); }
+    .calc-row.carry .label, .calc-row.carry .val { font-size: 13px; color: var(--muted); font-weight: 400; }
+    .calc-row.result .label { color: #8db2ff; }
+    .calc-row.result .val { color: var(--text); }
+    .spill { width: 30px; height: 36px; display: grid; place-content: center; font-size: 15px; color: var(--muted); }
+    .spill.lost { border: 2px dashed #ff8a8a; color: #ff8a8a; font-weight: 700; }
+    .calc-row.carry .spill { height: 20px; }
+    .calc-row.carry .spill.c1 { color: #8db2ff; }
+    .rule { height: 0; border-top: 3px solid var(--ink); margin: 6px 0 6px 120px; width: 274px; }
+    .val-compact { display: none; }
+    .stepper { display: flex; align-items: center; gap: 10px; font-size: 18px; }
+    .stepper .button { min-height: 0; padding: 4px 10px; font-size: 16px; }
+    .calc-note { margin: 12px 0 0; }
+
+    .flags { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .flag {
+      padding: 9px 6px 8px; text-align: center;
+      border: 2px solid transparent;
+      border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%231d1e21'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E") 3 fill / 6px stretch;
+      color: var(--muted);
+    }
+    .flag b { display: block; font-size: 28px; line-height: 1; }
+    .flag span { display: block; margin-top: 5px; font-size: 12px; letter-spacing: .02em; }
+    .flag i { display: block; margin-top: 3px; font-style: normal; font-size: 16px; }
+    .flag.on { border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='0' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='2' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='3' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%230f1012'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='2' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='6' y='4' width='1' height='1' fill='%230f1012'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='3' y='5' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%234f86f7'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%230f1012'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%230f1012'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%230f1012'/%3E%3C/svg%3E"); color: var(--ink); filter: drop-shadow(3px 3px 0 var(--ink)); }
+    .explain { margin: 14px 0 0; padding: 0; list-style: none; font-size: 15px; line-height: 1.3; }
+    .explain li { position: relative; margin: 0 0 8px; padding-left: 18px; color: var(--text); }
+    .explain li::before { content: ""; position: absolute; left: 0; top: 5px; width: 8px; height: 8px; background: var(--berry); box-shadow: 1px 1px 0 var(--ink); }
+    .explain li.quiet { color: var(--muted); }
+    .explain li.quiet::before { background: var(--track); }
+
+    .nib .chip { animation: glow 2.2s steps(2) infinite; }
+    .app.is-processing .nib .chip { animation: compute-glow .2s steps(2) infinite; }
+    @media (prefers-reduced-motion: reduce) { .nib .chip, .app.is-processing .nib .chip { animation: none; } }
+
+    @media (max-width: 900px) {
+      .alu-results { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 460px) {
+      .bit { width: 31px; height: 42px; font-size: 18px; }
+      .bit small { font-size: 9px; }
+      .bits { gap: 3px; }
+      .bits > .bit:nth-child(5) { margin-left: 5px; }
+      .num { width: 130px; font-size: 16px; }
+      .choices.ops { grid-template-columns: 1fr 1fr; }
+      .choice { min-height: 64px; }
+      .calc { padding: 12px 10px; }
+      .calc-row { grid-template-columns: 44px 22px 194px; gap: 2px 5px; margin: 4px 0; }
+      .calc-row.head, .calc-row .val, .calc-row > span:not([class]) { display: none; }
+      .calc-row .val-compact { display: block; grid-column: 3; color: var(--muted); font-size: 12px; white-space: nowrap; }
+      .calc-row.result .val-compact { color: var(--text); }
+      .calc-row .bit { width: 22px; height: 28px; font-size: 15px; }
+      .calc-row .bits { gap: 2px; }
+      .calc-row .bits > .bit:nth-child(5) { margin-left: 4px; }
+      .calc-row .label { font-size: 13px; }
+      .spill { width: 22px; height: 28px; }
+      .rule { margin-left: 76px; width: 194px; }
+      .flag b { font-size: 22px; }
+      .flag span { font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="guide" aria-live="polite">
+      <svg class="nib" viewBox="0 0 16 16" role="img" aria-label="Nib the chip robot" shape-rendering="crispEdges">
+        <g class="bulb"><rect x="7" y="0" width="2" height="1" fill="#4f86f7"/></g>
+        <rect x="7" y="1" width="2" height="1" fill="#0f1012"/>
+        <rect x="2" y="2" width="12" height="1" fill="#0f1012"/>
+        <rect x="1" y="3" width="1" height="1" fill="#0f1012"/>
+        <rect x="2" y="3" width="3" height="1" fill="#a9c6ff"/>
+        <rect x="5" y="3" width="9" height="1" fill="#4f86f7"/>
+        <rect x="14" y="3" width="1" height="1" fill="#0f1012"/>
+        <rect x="0" y="4" width="1" height="1" fill="#8b93a7"/>
+        <rect x="1" y="4" width="1" height="1" fill="#0f1012"/>
+        <rect x="2" y="4" width="1" height="1" fill="#4f86f7"/>
+        <rect x="3" y="4" width="10" height="1" fill="#0f1012"/>
+        <rect x="13" y="4" width="1" height="1" fill="#4f86f7"/>
+        <rect x="14" y="4" width="1" height="1" fill="#0f1012"/>
+        <rect x="15" y="4" width="1" height="1" fill="#8b93a7"/>
+        <rect x="1" y="5" width="1" height="1" fill="#0f1012"/>
+        <rect x="2" y="5" width="1" height="1" fill="#4f86f7"/>
+        <rect x="3" y="5" width="1" height="1" fill="#0f1012"/>
+        <rect x="6" y="5" width="4" height="1" fill="#0f1012"/>
+        <rect x="12" y="5" width="1" height="1" fill="#0f1012"/>
+        <rect x="13" y="5" width="1" height="1" fill="#4f86f7"/>
+        <rect x="14" y="5" width="1" height="1" fill="#0f1012"/>
+        <rect x="0" y="6" width="1" height="1" fill="#8b93a7"/>
+        <rect x="1" y="6" width="1" height="1" fill="#0f1012"/>
+        <rect x="2" y="6" width="1" height="1" fill="#4f86f7"/>
+        <rect x="3" y="6" width="1" height="1" fill="#0f1012"/>
+        <rect x="6" y="6" width="4" height="1" fill="#0f1012"/>
+        <rect x="12" y="6" width="1" height="1" fill="#0f1012"/>
+        <rect x="13" y="6" width="1" height="1" fill="#4f86f7"/>
+        <rect x="14" y="6" width="1" height="1" fill="#0f1012"/>
+        <rect x="15" y="6" width="1" height="1" fill="#8b93a7"/>
+        <rect x="1" y="7" width="1" height="1" fill="#0f1012"/>
+        <rect x="2" y="7" width="1" height="1" fill="#4f86f7"/>
+        <rect x="3" y="7" width="10" height="1" fill="#0f1012"/>
+        <rect x="13" y="7" width="1" height="1" fill="#4f86f7"/>
+        <rect x="14" y="7" width="1" height="1" fill="#0f1012"/>
+        <rect x="0" y="8" width="1" height="1" fill="#8b93a7"/>
+        <rect x="1" y="8" width="1" height="1" fill="#0f1012"/>
+        <rect x="2" y="8" width="1" height="1" fill="#4f86f7"/>
+        <rect x="3" y="8" width="2" height="1" fill="#0f1012"/>
+        <rect x="5" y="8" width="1" height="1" fill="#c9dbff"/>
+        <rect x="6" y="8" width="4" height="1" fill="#0f1012"/>
+        <rect x="10" y="8" width="1" height="1" fill="#c9dbff"/>
+        <rect x="11" y="8" width="2" height="1" fill="#0f1012"/>
+        <rect x="13" y="8" width="1" height="1" fill="#4f86f7"/>
+        <rect x="14" y="8" width="1" height="1" fill="#0f1012"/>
+        <rect x="15" y="8" width="1" height="1" fill="#8b93a7"/>
+        <rect x="1" y="9" width="1" height="1" fill="#0f1012"/>
+        <rect x="2" y="9" width="1" height="1" fill="#4f86f7"/>
+        <rect x="3" y="9" width="3" height="1" fill="#0f1012"/>
+        <rect x="6" y="9" width="4" height="1" fill="#c9dbff"/>
+        <rect x="10" y="9" width="3" height="1" fill="#0f1012"/>
+        <rect x="13" y="9" width="1" height="1" fill="#4f86f7"/>
+        <rect x="14" y="9" width="1" height="1" fill="#0f1012"/>
+        <rect x="0" y="10" width="1" height="1" fill="#8b93a7"/>
+        <rect x="1" y="10" width="1" height="1" fill="#0f1012"/>
+        <rect x="2" y="10" width="12" height="1" fill="#2f5fcf"/>
+        <rect x="14" y="10" width="1" height="1" fill="#0f1012"/>
+        <rect x="15" y="10" width="1" height="1" fill="#8b93a7"/>
+        <rect x="2" y="11" width="12" height="1" fill="#0f1012"/>
+        <rect x="4" y="12" width="1" height="1" fill="#0f1012"/>
+        <rect x="5" y="12" width="6" height="1" fill="#4f86f7"/>
+        <rect x="11" y="12" width="1" height="1" fill="#0f1012"/>
+        <rect x="4" y="13" width="1" height="1" fill="#0f1012"/>
+        <rect x="5" y="13" width="6" height="1" fill="#4f86f7"/>
+        <rect class="chip" x="7" y="13" width="2" height="1" fill="#c9dbff"/>
+        <rect x="11" y="13" width="1" height="1" fill="#0f1012"/>
+        <rect x="4" y="14" width="8" height="1" fill="#0f1012"/>
+        <rect x="3" y="15" width="3" height="1" fill="#0f1012"/>
+        <rect x="10" y="15" width="3" height="1" fill="#0f1012"/>
+        <rect class="eye" x="4" y="5" width="2" height="2" fill="#cfe0ff"/><rect class="eye" x="10" y="5" width="2" height="2" fill="#cfe0ff"/>
+      </svg>
+      <div class="speech" id="nib-message">Hi! I'm Nib, short for nibble: half a byte, all brain. Pick an operation for my 8-bit ALU.</div>
+    </section>
+
+    <section class="panel">
+      <div class="step" data-step="1">
+        <p class="step-count">1 / 3</p>
+        <div class="choices ops">
+          <button class="choice selected" type="button" data-op="add"><strong>ADD <span class="sym">A + B</span></strong><span>Add with carry and overflow.</span></button>
+          <button class="choice" type="button" data-op="sub"><strong>SUB <span class="sym">A − B</span></strong><span>Subtract with two's complement.</span></button>
+          <button class="choice" type="button" data-op="and"><strong>AND <span class="sym">A &amp; B</span></strong><span>1 only where both bits are 1.</span></button>
+          <button class="choice" type="button" data-op="or"><strong>OR <span class="sym">A | B</span></strong><span>1 where either bit is 1.</span></button>
+          <button class="choice" type="button" data-op="xor"><strong>XOR <span class="sym">A ^ B</span></strong><span>1 where the bits differ.</span></button>
+          <button class="choice" type="button" data-op="not"><strong>NOT <span class="sym">~A</span></strong><span>Flip every bit of A.</span></button>
+          <button class="choice" type="button" data-op="shl"><strong>SHL <span class="sym">A &lt;&lt; n</span></strong><span>Shift A left by n bits.</span></button>
+          <button class="choice" type="button" data-op="shr"><strong>SHR <span class="sym">A &gt;&gt; n</span></strong><span>Shift A right by n bits.</span></button>
+        </div>
+        <div class="actions">
+          <span></span>
+          <button class="button" id="to-operands" type="button">NEXT →</button>
+        </div>
+      </div>
+
+      <div class="step" data-step="2" hidden>
+        <p class="step-count">2 / 3</p>
+        <div class="operands">
+          <div class="setting operand" id="operand-a">
+            <div class="operand-head">
+              <label for="a-input">INPUT <em>A</em></label>
+              <input class="num" id="a-input" value="90" inputmode="text" autocomplete="off" spellcheck="false" aria-describedby="a-readout">
+            </div>
+            <div class="bits" id="a-bits" role="group" aria-label="Bits of A"></div>
+            <p class="readout" id="a-readout"></p>
+          </div>
+          <div class="setting operand" id="operand-b">
+            <div class="operand-head">
+              <label for="b-input">INPUT <em>B</em></label>
+              <input class="num" id="b-input" value="60" inputmode="text" autocomplete="off" spellcheck="false" aria-describedby="b-readout">
+            </div>
+            <div class="bits" id="b-bits" role="group" aria-label="Bits of B"></div>
+            <p class="readout" id="b-readout"></p>
+          </div>
+          <div class="setting" id="shift-setting" hidden>
+            <label for="shift"><span>SHIFT BY</span><output id="shift-value">1</output></label>
+            <input type="range" class="plain" id="shift" min="0" max="7" value="1">
+            <p class="setting-note">Empty places fill with 0. The last bit pushed out goes to C.</p>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="button secondary" data-back="1" type="button">← BACK</button>
+          <button class="button" id="run" type="button">RUN →</button>
+        </div>
+      </div>
+
+      <div class="step" data-step="3" hidden>
+        <p class="step-count">3 / 3</p>
+        <div class="results alu-results">
+          <div class="result">
+            <p class="result-title" id="calc-title">ADD · A + B</p>
+            <div class="setting calc" id="calc"></div>
+            <p class="setting-note calc-note" id="calc-note"></p>
+          </div>
+          <div class="result">
+            <p class="result-title">FLAGS</p>
+            <div class="flags" id="flags"></div>
+            <ul class="explain" id="explain"></ul>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="action-group">
+            <button class="button secondary" id="again" type="button">ANOTHER OPERATION</button>
+            <button class="button secondary" id="edit" type="button">EDIT NUMBERS</button>
+          </div>
+          <button class="button" id="copy" type="button">COPY RESULT</button>
+        </div>
+      </div>
+
+      <div class="status-row">
+        <div class="status" id="status" role="status" aria-live="polite"></div>
+        <div class="loader" id="loader" role="img" aria-label="Computing" hidden>
+          <i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Presentation layer only. Every result comes from alu_execute() in
+    // alu.cpp, compiled to alu.wasm (see wasm.cpp and build_wasm.sh).
+    const byId = (id) => document.getElementById(id);
+
+    const OPS = {
+      add: { code: 0, name: "ADD", sym: "+",   title: "A + B" },
+      sub: { code: 1, name: "SUB", sym: "−",   title: "A − B" },
+      and: { code: 2, name: "AND", sym: "AND", title: "A AND B" },
+      or:  { code: 3, name: "OR",  sym: "OR",  title: "A OR B" },
+      xor: { code: 4, name: "XOR", sym: "XOR", title: "A XOR B" },
+      not: { code: 5, name: "NOT", sym: "NOT", title: "NOT A" },
+      shl: { code: 6, name: "SHL", sym: "<<",  title: "A << n" },
+      shr: { code: 7, name: "SHR", sym: ">>",  title: "A >> n" }
+    };
+
+    const state = { op: "add", a: 90, b: 60, shift: 1 };
+    let aluRun = null;
+    let busy = false;
+
+    const isShift = (op) => op === "shl" || op === "shr";
+    const isArith = (op) => op === "add" || op === "sub";
+    const usesB = (op) => op !== "not";
+    const inputB = () => (isShift(state.op) ? state.shift : state.b);
+    const signed = (v) => (v & 128 ? v - 256 : v);
+    const bin = (v) => v.toString(2).padStart(8, "0").replace(/^(\d{4})/, "$1 ");
+    const hex = (v) => "0x" + v.toString(16).toUpperCase().padStart(2, "0");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    async function loadAlu() {
+      try {
+        const response = await fetch("alu.wasm");
+        if (!response.ok) throw new Error();
+        const { instance } = await WebAssembly.instantiate(await response.arrayBuffer(), {});
+        aluRun = instance.exports.alu_run;
+      } catch (error) {
+        setStatus("Could not load alu.wasm. Serve the public/ folder over HTTP.", true);
+      }
+    }
+
+    // Unpacks the integer returned by alu_run() (layout documented in wasm.cpp).
+    function runAlu(op, a, b) {
+      const packed = aluRun(OPS[op].code, a, b);
+      return {
+        value: packed & 255,
+        carries: (packed >> 8) & 255,
+        c: (packed >> 16) & 1,
+        v: (packed >> 17) & 1,
+        z: (packed >> 18) & 1,
+        n: (packed >> 19) & 1
+      };
+    }
+
+    // Same rules as parse_byte() in main.cpp: decimal -128..255, 0b..., 0x...
+    function parseByte(text) {
+      const s = text.replace(/\s+/g, "");
+      let m;
+      if ((m = /^0b([01]{1,8})$/i.exec(s))) return parseInt(m[1], 2);
+      if ((m = /^0x([0-9a-f]{1,2})$/i.exec(s))) return parseInt(m[1], 16);
+      if ((m = /^(-?)(\d{1,3})$/.exec(s))) {
+        const n = Number(m[2]);
+        if (m[1]) return n <= 128 ? (256 - n) & 255 : null;
+        return n <= 255 ? n : null;
+      }
+      return null;
+    }
+
+    function setStatus(message, error = false) {
+      byId("status").textContent = message;
+      byId("status").classList.toggle("error", error);
+    }
+
+    function say(message) { byId("nib-message").textContent = message; }
+
+    function operandMessage() {
+      if (state.op === "not") return "NOT only needs A. Click bits to flip them, or type 90, -38, 0b0101 or 0x5A.";
+      if (isShift(state.op)) return "Set A, then choose how many places to shift it.";
+      return "Set A and B. Click bits to flip them, or type 90, -38, 0b0101 or 0x5A.";
+    }
+
+    function showStep(step) {
+      document.querySelectorAll("[data-step]").forEach((panel) => {
+        panel.hidden = Number(panel.dataset.step) !== step;
+      });
+      document.querySelector(".app").classList.toggle("wide", step === 3);
+      setStatus("");
+      if (step === 1) say("Pick an operation and I'll run it through my 8-bit ALU.");
+      if (step === 2) { say(operandMessage()); renderOperands(); }
+      if (step === 3) renderResult();
+    }
+
+    function chooseOperation(op) {
+      state.op = op;
+      document.querySelectorAll("[data-op]").forEach((button) => {
+        button.classList.toggle("selected", button.dataset.op === op);
+      });
+    }
+
+    /* ---------- step 2: operand registers ---------- */
+    function buildBits(which) {
+      const box = byId(which + "-bits");
+      for (let i = 7; i >= 0; i--) {
+        const cell = document.createElement("button");
+        cell.type = "button";
+        cell.className = "bit";
+        cell.dataset.bit = i;
+        cell.innerHTML = "<b>0</b><small>" + (1 << i) + "</small>";
+        cell.addEventListener("click", () => {
+          state[which] ^= 1 << i;
+          byId(which + "-input").value = state[which];
+          byId(which + "-input").classList.remove("invalid");
+          setStatus("");
+          paintOperand(which);
+        });
+        box.appendChild(cell);
+      }
+    }
+
+    function paintOperand(which) {
+      const value = state[which];
+      byId(which + "-bits").querySelectorAll(".bit").forEach((cell) => {
+        const i = Number(cell.dataset.bit);
+        const on = (value >> i) & 1;
+        cell.classList.toggle("on", Boolean(on));
+        cell.firstChild.textContent = on;
+        cell.setAttribute("aria-label", which.toUpperCase() + " bit " + i + " (value " + (1 << i) + ") is " + on);
+      });
+      byId(which + "-readout").innerHTML =
+        "unsigned <b>" + value + "</b> · signed <b>" + signed(value) + "</b> · hex <b>" + hex(value) + "</b>";
+    }
+
+    function renderOperands() {
+      byId("operand-b").hidden = !usesB(state.op) || isShift(state.op);
+      byId("shift-setting").hidden = !isShift(state.op);
+      paintOperand("a");
+      paintOperand("b");
+    }
+
+    function onTyped(which) {
+      const input = byId(which + "-input");
+      const value = parseByte(input.value);
+      const ok = value !== null;
+      input.classList.toggle("invalid", !ok && input.value.trim() !== "");
+      if (ok) {
+        state[which] = value;
+        paintOperand(which);
+        setStatus("");
+      } else if (input.value.trim() !== "") {
+        setStatus("Use decimal -128..255, binary 0b01011010 or hex 0x5A.", true);
+      }
+    }
+
+    /* ---------- step 3: long-hand result ---------- */
+    function cell(tag, className, text) {
+      const el = document.createElement(tag);
+      if (className) el.className = className;
+      if (text !== undefined) el.textContent = text;
+      return el;
+    }
+
+    function bitRow(value, { toggles, invert = false, result = false } = {}) {
+      const box = cell("div", "bits");
+      for (let i = 7; i >= 0; i--) {
+        const on = (value >> i) & 1;
+        const el = cell(toggles ? "button" : "span", "bit" + (on ? " on" : ""), String(on));
+        if (toggles) {
+          el.type = "button";
+          el.dataset.row = toggles;
+          el.dataset.bit = i;
+          el.setAttribute("aria-label", "Flip bit " + i + " of " + toggles.toUpperCase());
+          el.addEventListener("click", () => {
+            state[toggles] ^= 1 << i;
+            byId(toggles + "-input").value = state[toggles];
+            renderResult({ row: toggles, bit: i });
+          });
+        }
+        if (result) el.setAttribute("aria-label", "Result bit " + i + " is " + on);
+        box.appendChild(el);
+      }
+      return box;
+    }
+
+    function valueCells(row, value) {
+      row.append(cell("span", "val", String(value)), cell("span", "val", String(signed(value))), cell("span", "val", hex(value)),
+        cell("span", "val-compact", "unsigned " + value + " · signed " + signed(value) + " · " + hex(value)));
+    }
+
+    function calcRow(className, label, spill, middle, value) {
+      const row = cell("div", "calc-row" + (className ? " " + className : ""));
+      row.append(cell("span", "label", label), spill || cell("span", "spill"), middle);
+      if (value === undefined) row.append(cell("span"), cell("span"), cell("span"));
+      else valueCells(row, value);
+      return row;
+    }
+
+    function shiftStepper() {
+      const box = cell("div", "stepper");
+      const minus = cell("button", "button secondary", "−");
+      const plus = cell("button", "button secondary", "+");
+      minus.type = plus.type = "button";
+      minus.setAttribute("aria-label", "Shift one place less");
+      plus.setAttribute("aria-label", "Shift one place more");
+      minus.disabled = state.shift <= 0;
+      plus.disabled = state.shift >= 7;
+      const change = (d) => {
+        state.shift = Math.min(7, Math.max(0, state.shift + d));
+        byId("shift").value = state.shift;
+        byId("shift-value").textContent = state.shift;
+        renderResult({ shift: d });
+      };
+      minus.addEventListener("click", () => change(-1));
+      plus.addEventListener("click", () => change(1));
+      box.append(minus, cell("span", "", "n = " + state.shift), plus);
+      return box;
+    }
+
+    function resultMessage(op, a, b, r) {
+      const sa = signed(a), sb = signed(b);
+      if (r.v) {
+        const exact = op === "add" ? sa + sb : sa - sb;
+        return "Whoa, overflow! " + sa + " " + OPS[op].sym + " " + sb + " = " + exact +
+          " doesn't fit in -128..127, so the 8 bits read as " + signed(r.value) + ".";
+      }
+      if (r.c && op === "add") return "A carry fell off bit 7! " + a + " + " + b + " = " + (a + b) + " needs 9 bits, so I keep " + r.value + ".";
+      if (r.c && op === "sub") return "Borrow! " + a + " is smaller than " + b + " as unsigned, so the result wrapped to " + r.value + ".";
+      if (r.c && isShift(op)) return "A 1 fell off the " + (op === "shl" ? "left" : "right") + " edge and landed in the carry flag.";
+      if (r.z) return "Everything cancelled out. The result is zero!";
+      return "Done! Click any bit of " + (usesB(op) && !isShift(op) ? "A or B" : "A") + " and I'll recompute it instantly.";
+    }
+
+    function explanations(op, a, b, r) {
+      const sa = signed(a), sb = signed(b);
+      const items = [];
+      if (r.c) {
+        if (op === "add") items.push("C=1: carry out of bit 7. Unsigned " + a + " + " + b + " = " + (a + b) + " is more than 255.");
+        else if (op === "sub") items.push("C=1: borrow. Unsigned " + a + " < " + b + ", so the result wrapped around.");
+        else items.push("C=1: the last bit shifted out was a 1.");
+      }
+      if (r.v) {
+        const exact = op === "add" ? sa + sb : sa - sb;
+        items.push("V=1: signed overflow. " + sa + " " + OPS[op].sym + " " + sb + " = " + exact + " is outside -128..127.");
+      }
+      if (r.z) items.push("Z=1: every bit of the result is 0.");
+      if (r.n) items.push("N=1: bit 7 is 1, so the result is negative when read as signed (" + signed(r.value) + ").");
+      if (!items.length) items.push("No flags set.");
+      const li = items.map((text) => cell("li", "", text));
+      if (!isArith(op)) li.push(cell("li", "quiet", "V is only set by ADD and SUB: logic and shift operations can't overflow."));
+      return li;
+    }
+
+    function renderResult(focus) {
+      if (!aluRun) return;
+      const op = state.op, a = state.a, b = inputB();
+      const r = runAlu(op, a, b);
+      const info = OPS[op];
+      const calc = byId("calc");
+      const rows = [];
+
+      byId("calc-title").textContent = info.name + " · " + info.title;
+
+      const head = cell("div", "calc-row head");
+      head.append(cell("span"), cell("span"), cell("span"), cell("span", "", "UNSIGNED"), cell("span", "", "SIGNED"), cell("span", "", "HEX"));
+      rows.push(head);
+
+      if (isArith(op)) {
+        // carry INTO each column; bit 0 gets the carry-in (1 for SUB)
+        const carryIn = op === "sub" ? 1 : 0;
+        const bits = cell("div", "bits");
+        for (let i = 7; i >= 0; i--) {
+          const c = i === 0 ? carryIn : (r.carries >> (i - 1)) & 1;
+          bits.appendChild(cell("span", "bit" + (c ? " c1" : ""), c ? "1" : "·"));
+        }
+        const out = (r.carries >> 7) & 1;
+        const spill = cell("span", "spill" + (out ? " c1" : ""), out ? "1" : "");
+        rows.push(calcRow("carry", "carry", spill, bits));
+      }
+
+      rows.push(calcRow("", "A", null, bitRow(a, { toggles: "a" }), a));
+
+      if (op === "sub") {
+        rows.push(calcRow("", "+ NOT B", null, bitRow(~b & 255, { toggles: "b" }), ~b & 255));
+      } else if (isShift(op)) {
+        rows.push(calcRow("", info.sym + " n", null, shiftStepper()));
+      } else if (usesB(op)) {
+        rows.push(calcRow("", (op === "add" ? "+" : info.name) + " B", null, bitRow(b, { toggles: "b" }), b));
+      }
+
+      rows.push(cell("div", "rule"));
+
+      // the 9th bit an 8-bit register can't hold
+      let lost = null;
+      if (op === "add" && r.c) {
+        lost = cell("span", "spill lost", "1");
+        lost.title = "Carry out of bit 7: lost from the 8-bit result";
+      }
+      rows.push(calcRow("result", info.name, lost, bitRow(r.value, { result: true }), r.value));
+
+      calc.replaceChildren(...rows);
+
+      const notes = {
+        add: "Each column is a full adder: sum = a XOR b XOR carry-in.",
+        sub: "B = " + bin(b) + ". SUB flips every bit of B and adds 1 through the carry-in: that's two's complement.",
+        and: "Each column is worked out on its own: no carries between bits.",
+        or: "Each column is worked out on its own: no carries between bits.",
+        xor: "Each column is worked out on its own: no carries between bits.",
+        not: "Every bit of A is flipped (one's complement).",
+        shl: "Every bit moves n places left; the empty places on the right fill with 0.",
+        shr: "Every bit moves n places right; the empty places on the left fill with 0."
+      };
+      byId("calc-note").textContent = notes[op] + " Tip: click a bit of A" + (usesB(op) && !isShift(op) ? " or B" : "") + " to flip it.";
+
+      const flagInfo = [
+        ["C", op === "sub" ? "BORROW" : "CARRY", r.c],
+        ["V", "OVERFLOW", r.v],
+        ["Z", "ZERO", r.z],
+        ["N", "NEGATIVE", r.n]
+      ];
+      byId("flags").replaceChildren(...flagInfo.map(([letter, name, on]) => {
+        const tile = cell("div", "flag" + (on ? " on" : ""));
+        tile.append(cell("b", "", letter), cell("span", "", name), cell("i", "", String(on)));
+        tile.setAttribute("aria-label", name + " flag " + on);
+        return tile;
+      }));
+      byId("explain").replaceChildren(...explanations(op, a, b, r));
+
+      say(resultMessage(op, a, b, r));
+
+      if (focus && focus.row) {
+        const target = calc.querySelector('[data-row="' + focus.row + '"][data-bit="' + focus.bit + '"]');
+        if (target) target.focus();
+      } else if (focus && focus.shift) {
+        const steppers = calc.querySelectorAll(".stepper .button");
+        const target = focus.shift < 0 ? steppers[0] : steppers[1];
+        (target.disabled ? calc.querySelector(".stepper .button:not(:disabled)") : target)?.focus();
+      }
+    }
+
+    function run(button) {
+      if (busy) return;
+      if (!aluRun) { setStatus("The ALU is still loading. Try again in a moment.", true); return; }
+      busy = true;
+      button.disabled = true;
+      button.textContent = "WORKING...";
+      const loader = byId("loader");
+      loader.hidden = false;
+      button.parentElement.insertBefore(loader, button);
+      document.querySelector(".app").classList.add("is-processing");
+      say("Computing... Nib is rippling the carries!");
+
+      setTimeout(() => {
+        busy = false;
+        document.querySelector(".app").classList.remove("is-processing");
+        loader.hidden = true;
+        byId("status").parentElement.appendChild(loader);
+        button.disabled = false;
+        button.textContent = "RUN →";
+        showStep(3);
+      }, reducedMotion ? 0 : 480);
+    }
+
+    function summary() {
+      const op = state.op, a = state.a, b = inputB();
+      const r = runAlu(op, a, b);
+      const line = (label, v) => label.padEnd(8) + bin(v) + "   unsigned " + String(v).padStart(3) + " | signed " + String(signed(v)).padStart(4) + " | hex " + hex(v);
+      const out = ["8-bit ALU: " + OPS[op].name + " (" + OPS[op].title + ")", line("A", a)];
+      if (isShift(op)) out.push("n".padEnd(8) + b);
+      else if (usesB(op)) out.push(line("B", b));
+      out.push(line("Result", r.value), "Flags: C=" + r.c + " V=" + r.v + " Z=" + r.z + " N=" + r.n);
+      return out.join("\n");
+    }
+
+    /* ---------- wiring ---------- */
+    buildBits("a");
+    buildBits("b");
+    document.querySelectorAll("[data-op]").forEach((button) => {
+      button.addEventListener("click", () => chooseOperation(button.dataset.op));
+      button.addEventListener("dblclick", () => showStep(2));
+    });
+    byId("to-operands").addEventListener("click", () => showStep(2));
+    document.querySelectorAll("[data-back]").forEach((button) => {
+      button.addEventListener("click", () => showStep(Number(button.dataset.back)));
+    });
+    ["a", "b"].forEach((which) => {
+      byId(which + "-input").addEventListener("input", () => onTyped(which));
+      byId(which + "-input").addEventListener("keydown", (event) => { if (event.key === "Enter") run(byId("run")); });
+      byId(which + "-input").addEventListener("blur", () => {
+        const input = byId(which + "-input");
+        if (parseByte(input.value) === null) { input.value = state[which]; input.classList.remove("invalid"); setStatus(""); }
+      });
+    });
+    byId("shift").addEventListener("input", () => {
+      state.shift = Number(byId("shift").value);
+      byId("shift-value").textContent = state.shift;
+    });
+    byId("run").addEventListener("click", (event) => run(event.currentTarget));
+    byId("again").addEventListener("click", () => showStep(1));
+    byId("edit").addEventListener("click", () => showStep(2));
+    byId("copy").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(summary());
+        setStatus("Copied to the clipboard!");
+      } catch (error) {
+        setStatus("Could not copy. Your browser blocked clipboard access.", true);
+      }
+    });
+
+    chooseOperation("add");
+    showStep(1);
+    say("Hi! I'm Nib, short for nibble: half a byte, all brain. Pick an operation for my 8-bit ALU.");
+    loadAlu();
+  </script>
+</body>
+</html>
