@@ -2,6 +2,8 @@
 
 CS101 – Introduction to Computer Systems, group project (topic #2: 8-bit ALU Simulator).
 
+**Live demo:** https://cs101-project-three.vercel.app
+
 The user enters two 8-bit values and picks an operation (ADD, SUB, AND, OR, XOR, NOT, SHL or SHR). The program shows the result in binary, unsigned decimal, signed decimal and hex, along with the four status flags:
 
 | Flag | Name | Set when… |
